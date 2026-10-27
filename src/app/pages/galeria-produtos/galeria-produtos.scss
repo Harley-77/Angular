@@ -1,0 +1,41 @@
+.container {
+    max-width: 120px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.galeria-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); //coluns responsivs.
+    gap: 20px;
+    padding: 16px;
+}
+
+.produto {
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; //transição suave para hover.
+    background-color: #ffffff;
+}
+
+.produto:hover {
+    transform: translateY(-5px); //efeito de elevação ao passar o mouse.
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); //sombra suave.
+}
+
+.produto.imagem {
+    max-width: 100%;
+    height: 200px; //altura uniforme para melhorar o visual
+    border-radius: 4px;
+    margin-bottom: 12px;
+    object-fit: contain; //garante que a imagem se ajuste sem distorção.
+}
+
+.mensagem-erro {
+    color: #ff0000; //vermelho para indicar erro.
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}

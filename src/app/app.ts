@@ -1,12 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, signal } from '@angular/core'; //padrão do angular que importa o decorator.
+import { RouterOutlet } from '@angular/router'; //padrão do angular que importa o recurso responsável por exibir o conteúdo das rotas.
 
-@Component({
-  imports: [RouterOutlet],
-  selector: 'app-root',
-  styleUrl: './app.scss',
-  templateUrl: './app.html',
+@Component({ //Aqui iniciai  a configuração do componente
+  imports: [RouterOutlet], //disponibiliza p routeroutlet para o template deste componente.
+  selector: 'app-root',  //Identifica o componente principal - root.
+  styleUrl: './app.scss', //idntifica o arquivo de estilo.
+  templateUrl: './app.html', //Identifica o arquivo HTML do componente.
 })
-export class App {
-  protected readonly title = signal('vitrine-produtos');
+
+export class App { //declara e exporta o componente principal d aplicação.
+  
 }
