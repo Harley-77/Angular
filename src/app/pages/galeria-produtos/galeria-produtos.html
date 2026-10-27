@@ -1,14 +1,17 @@
 <main class="container"> <!-- Define o conteúdo principal da página e aplica nosso container. -->
 
-    <h1>Vitrine de Produtos</h1> <!-- Exibe o título principal da página. -->
-
-    @if (blnCarregando) { <!-- Verifica se os produtos ainda estão sendo carregados. -->
-        <p>Carregando produtos... Aguarde!</p> <!-- Exibe uma mensagem enquanto aguardamos a resposta da API. -->
-    } @else if (blnErro) { <!-- Verifica se ocorreu algum erro durante a requisição. -->
-        <p class="mensagem-erro">Não foi possível carregar os produtos.</p> <!-- Informa ao usuário que ocorreu um erro. -->
-    } @else if (!blnCarregando && !blnErro && arrProdutos.length === 0) { <!-- Verifica se a consulta terminou sem retornar produtos. -->
-        <p>Nenhum produto encontrado.</p> <!-- Exibe uma mensagem quando a lista estiver vazia. -->
-    } else //(!blnCarregando && !blnErro) { <!-- Exibe a galeria somente depois que o carregamento terminar sem erro. -->
+    <h1>Vitrine de Produtos</h1> 
+<!-- Verifica se os produtos ainda estão sendo carregados. -->
+    @if (blnCarregando) { 
+        <p>Carregando produtos... Aguarde!</p> 
+<!-- Verifica se ocorreu algum erro durante a requisição. -->
+    } @else if (blnErro) { 
+        <p class="mensagem-erro">Não foi possível carregar os produtos.</p> >
+!-- Verifica se a consulta terminou sem retornar produtos. -->
+    } @else if (!blnCarregando && !blnErro && arrProdutos.length === 0) { <
+        <p>Nenhum produto encontrado.</p> 
+<!-- Exibe a galeria somente depois que o carregamento terminar sem erro.  opção: //(!blnCarregando && !blnErro) -->
+    } @else { 
         <section class="galeria-produtos"> <!-- Cria o container que receberá os produtos. -->
             @for (varProduto of arrProdutos; track varProduto.id) { <!-- Percorre o array e cria um elemento para cada produto. -->
                 <article class="produto"> <!-- Define visualmente um produto da galeria. -->
