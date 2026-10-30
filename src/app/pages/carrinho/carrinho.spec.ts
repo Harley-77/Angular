@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Carrinho } from './carrinho';
 
-describe('Carrinho', () => {
+describe('Sacola', () => {
   let component: Carrinho;
   let fixture: ComponentFixture<Carrinho>;
 

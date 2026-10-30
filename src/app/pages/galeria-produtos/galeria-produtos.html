@@ -1,29 +1,50 @@
 <main class="container"> <!-- Define o conteúdo principal da página e aplica nosso container. -->
 
     <h1>Vitrine de Produtos</h1> 
+    <p>Sacola: ({{srvSacolaRO.intQuantidadeTotal()}})</p>
+    <p>{{srvSacolaRO.intQuantidadeTotal()}}</p>
+
 <!-- Verifica se os produtos ainda estão sendo carregados. -->
     @if (blnCarregando) { 
         <p>Carregando produtos... Aguarde!</p> 
+
 <!-- Verifica se ocorreu algum erro durante a requisição. -->
     } @else if (blnErro) { 
-        <p class="mensagem-erro">Não foi possível carregar os produtos.</p> >
-!-- Verifica se a consulta terminou sem retornar produtos. -->
-    } @else if (!blnCarregando && !blnErro && arrProdutos.length === 0) { <
+        <p class="mensagem-erro">Não foi possível carregar os produtos.</p> 
+
+<!-- Verifica se a consulta terminou sem retornar produtos. -->
+    } @else if (arrProdutos.length === 0) { 
         <p>Nenhum produto encontrado.</p> 
+
 <!-- Exibe a galeria somente depois que o carregamento terminar sem erro.  opção: //(!blnCarregando && !blnErro) -->
     } @else { 
         <section class="galeria-produtos"> <!-- Cria o container que receberá os produtos. -->
             @for (varProduto of arrProdutos; track varProduto.id) { <!-- Percorre o array e cria um elemento para cada produto. -->
                 <article class="produto"> <!-- Define visualmente um produto da galeria. -->
-                    <img
-                        [src]="varProduto.image" //propoerty bindng
-                        [alt]="varProduto.title" //string  interpolation
-                        class="produto-imagem"
-                    > <!-- Exibe a imagem do produto utilizando property binding. -->
-
-                    <h2>{{ varProduto.title }}</h2> <!-- Exibe o título utilizando string interpolation. -->
-                    <p>{{ varProduto.category }}</p> <!-- Exibe a categoria do produto. -->
-                    <p>{{ varProduto.price }}</p> <!-- Exibe temporariamente o preço sem formatação monetária. -->
+                    <div class="produto-imagem-container"> 
+                        <!-- Exibe a imagem do produto utilizando property binding. -->
+                        <img
+                            [src]="varProduto.image" //propoerty bindng
+                            [alt]="varProduto.title" //string  interpolation
+                            class="produto-imagem"
+                        > 
+                    </div>
+                    <div class="produto-conteudo">
+                        <span class="produto-categoria">
+                            {{ varProduto.category }}
+                        </span>
+                        <h2 class="produto-titulo">{{ varProduto.title }}</h2> 
+                        <p class="produto-preco">{{ varProduto.price | currency:'BRL' : 'symbol' : '1.2-2' }}</p>
+                        
+                        <!-- Ao clicar o angular chama o método passando o prduto do card específico. -->
+                        <button 
+                            type="button" 
+                            class="botao-sacola" 
+                            (click)="mtdAdicionarSacola(varProduto)"
+                        >
+                            Adicionar à Sacola
+                        </button>
+                    </div>
                 </article>
             }
         </section>

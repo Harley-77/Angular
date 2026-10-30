@@ -1,9 +1,16 @@
-import { Component } from '@angular/core';
+import { Component,inject } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { srvSacola } from '../../services/sacola';
 
 @Component({
-  imports: [],
-  selector: 'app-carrinho',
-  styleUrl: './carrinho.scss',
-  templateUrl: './carrinho.html',
+  imports: [CurrencyPipe],
+  selector: 'app-sacola',
+  styleUrl: './sacola.scss',
+  templateUrl: './sacola.html',
 })
-export class Carrinho {}
+export class Carrinho {
+  readonly cmpSacola = inject(srvSacola);
+}
+
+
+

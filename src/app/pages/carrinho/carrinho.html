@@ -1,1 +1,43 @@
-<p>carrinho works!</p>
+<main class="container">
+    <h1>Minha Sacola</h1>
+    @if (cmpSacola.arrItens().length === 0) {
+        <p>Sua sacola está vazia.</p>
+    } @else {
+        <section class="lista-sacola">
+            @for (varItem of cmpSacola.arrItens(); track varItem.produto.id) {
+                <article class="item-sacola">
+                    <img
+                        [src]="varItem.produto.image"
+                        [alt]="varItem.produto.title"
+                        class="item-imagem"
+                    >
+
+                    <div class="item-dados">
+                        <h2>
+                            {{ varItem.produto.title }}
+                        </h2>
+
+                        <p>
+                            Preço:
+                            {{ varItem.produto.price | currency:'BRL':'symbol':'1.2-2' }}
+                        </p>
+
+                        <p>
+                            Quantidade:
+                            {{ varItem.quantidade }}
+                        </p>
+
+                        <p>
+                            Subtotal:
+                            {{
+                                varItem.produto.price * varItem.quantidade
+                                | currency:'BRL':'symbol':'1.2-2'
+                            }}
+                        </p>
+                    </div>
+                </article>
+            }
+        </section>
+    }
+</main>
+
