@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { Sacola } from '../../services/sacola';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-carrinho',
-  imports: [AsyncPipe, CurrencyPipe], //pipe de moeda.
+  imports: [AsyncPipe, CurrencyPipe, RouterLink], //pipe de moeda.
   styleUrl: './carrinho.scss',
   templateUrl: './carrinho.html',
 })

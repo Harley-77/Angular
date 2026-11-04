@@ -1,7 +1,13 @@
 <main class="container"> <!-- Define o conteúdo principal da página e aplica nosso container. -->
 
     <h1>Vitrine de Produtos</h1> 
-    <p>Sacola: {{srvSacola.obsQuantidadeTotal$ | async }} </p> <!-- Exibe a quantidade obtida pelo observable-->
+    <nav class="navegacao-sacola">
+        <a routerLink="/sacola" class="link-sacola">
+            Minha Sacola (
+            {{ srvSacola.obsQuantidadeTotal$ | async }}
+            )
+        </a>
+    </nav> <!-- Exibe a quantidade obtida pelo observable-->
 
 <!-- Verifica se os produtos ainda estão sendo carregados. -->
     @if (blnCarregando) { 

@@ -5,11 +5,12 @@ import { AsyncPipe } from '@angular/common'; //importa o pipe observação e de 
 import { Sacola } from '../../services/sacola'; // Importa serviço responsável pela sacola de compras.
 import { CardProduto } from '../../components/card-produto/card-produto'; // Importa o componente responsáel pela exibição de cada produto.
 import { DetalhesProduto } from '../detalhes-produto/detalhes-produto';
+import { RouterLink } from '@angular/router';
 
 @Component({ // Inicia a configuração do componente.
 
   selector: 'app-galeria-produtos', // Define o nome da tag HTML utilizada para representar este componente.
-  imports: [AsyncPipe, CardProduto], // define os recursos externos que virão - moeda
+  imports: [AsyncPipe, CardProduto, RouterLink], // define os recursos externos que virão - moeda
   templateUrl: './galeria-produtos.html', // Define qual é o arquivo HTML associado ao componente.
   styleUrl: './galeria-produtos.scss' // Define qual é o arquivo SCSS associado ao componente.
 
@@ -45,7 +46,6 @@ console.log ('02 produtos recebidos', prmProdutos);
         this.blnCarregando = false; // Informa que o carregamento terminou com sucesso.
         this.srvDetector.markForCheck();
 console.log('03 carregando', this.blnCarregando);
-        //this.srvDetector.detectChanges();
       },
 
 

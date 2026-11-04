@@ -23,7 +23,20 @@ export class Sacola { // Declara e exporta o serviço responsável por gerenciar
                 )
             )
         );
-
+    
+     
+    readonly obsValorTotal$: Observable<number> = // Aqui calcula o valor total da sacola.
+        this.obsItensSacola$.pipe(
+            map((prmItens: IItemSacola[]) =>
+                prmItens.reduce(
+                    (prmTotal: number, prmItem: IItemSacola) =>
+                        prmTotal +
+                        (prmItem.produto.price * prmItem.quantidade), // Multiplica a quantidade de cada item pelo valor unitário do mesmo.
+                    0
+                )
+            )
+        );
+    
     mtdAdicionarItem( // Declara o método responsável por adicionar um produto à sacola.
         prmProduto: IProduto, // Recebe o produto selecionado pelo usuário.
         prmQuantidade: number // Recebe a quantidade que deverá ser adicionada.
@@ -60,6 +73,46 @@ export class Sacola { // Declara e exporta o serviço responsável por gerenciar
         }
 
         this.sbjItensSacola.next(arrItensAtualizados); // Publica o novo estado para todos os componentes inscritos.
+    }
+
+    mtdAlterarQuantidade( // Altera a quantidade de um produto. Pode somar ou subtrair.
+        prmIdProduto: number, // parâmetro que identifica o produto objeto da ação;
+        prmVariacao: number // parÂmetro que indica de quanto será a variação.
+    ): void {
+
+        const cstItensAtuais: IItemSacola[] =
+            this.sbjItensSacola.getValue(); //cria o array e depois preenche com os dados da saola atual.
+
+        const arrItensAtualizados: IItemSacola[] =
+            cstItensAtuais.map( // carrega os itens de novo para a variável de atualização
+                (prmItem: IItemSacola) =>
+                    prmItem.produto.id === prmIdProduto // percorre a lista até achar o produto objeto.
+                        ? {
+                            ...prmItem,
+                            quantidade: Math.max(
+                                1,
+                                prmItem.quantidade + prmVariacao // aplica a variação.
+                            )
+                        }
+                        : prmItem
+            );
+
+        this.sbjItensSacola.next(arrItensAtualizados);
+    }
+
+    
+    mtdRemoverItem(prmIdProduto: number): void { // Remove um produto da sacola. Na realiade, não o remove de verdade, apenas aplica um método de filtro que deixa de exibir o item
+
+        const cstItensAtuais: IItemSacola[] = 
+            this.sbjItensSacola.getValue();
+
+        const arrItensAtualizados: IItemSacola[] =
+            cstItensAtuais.filter(
+                (prmItem: IItemSacola) =>
+                    prmItem.produto.id !== prmIdProduto //filtra excluindo o produto com o id recebido.
+            );
+
+        this.sbjItensSacola.next(arrItensAtualizados);
     }
 
     mtdObterItens(): IItemSacola[] { // Declara o método que devolve os itens atuais da sacola.

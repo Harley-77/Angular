@@ -1,6 +1,9 @@
 <main class="container"> <!-- Aqui injeta o conteúdo da sacola -->
     <h1>Minha Sacola</h1>
-    
+    <a routerLink="/produtos" class="link-voltar">
+        ← Continuar comprando
+    </a>
+
     @if (srvSacola.obsItensSacola$ | async; as arrItensSacola) {
     
         @if (arrItensSacola.length === 0) { <!-- Verifica se a sacola não está vazia -->
@@ -21,24 +24,55 @@
                             </h2> <!-- Exibe o título do produto -->
 
                             <p>
-                                Preço:
+                                Preço unitário:
                                 {{ varItem.produto.price | currency:'BRL':'symbol':'1.2-2' }}
                             </p> <!-- Exibe o preço do produto -->
 
-                            <p>
-                                Quantidade:
-                                {{ varItem.quantidade }}
-                            </p> <!-- Exibe q quantidade adicionada -->
+                            <div class="controle-quantidade">
+                                <span>Quantidade:</span>
+                                <button
+                                    type="button"
+                                    (click)="srvSacola.mtdAlterarQuantidade(varItem.produto.id, -1)"
+                                    [disabled]="varItem.quantidade <= 1"
+                                > - </button>
+                                 <strong>
+                                    {{ varItem.quantidade }}
+                                </strong> <!-- Exibe q quantidade adicionada -->
+
+                                <button
+                                    type="button"
+                                    (click)="srvSacola.mtdAlterarQuantidade(varItem.produto.id, 1)"
+                                > + </button>
+                            </div>
+
+                           
 
                             <p>
                                 Subtotal:
-                                {{
-                                    varItem.produto.price * varItem.quantidade
-                                    | currency:'BRL':'symbol':'1.2-2'
-                                }}
+                                <strong>
+                                    {{ varItem.produto.price * varItem.quantidade |currency:'BRL':'symbol':'1.2-2' }}
+                                </strong>
                             </p> <!-- Calcula e exibe o subtotal do produto -->
+
+                            <button
+                                type="button"
+                                class="botao-remover"
+                                (click)="srvSacola.mtdRemoverItem(varItem.produto.id)"
+                            >
+                                Remover produto
+                            </button>
+
                         </div>
                     </article>
+                }
+            </section>
+
+             <section class="resumo-sacola">
+                @if (srvSacola.obsValorTotal$ | async; as vlrTotal) {
+                    <h2>
+                        Total da compra:
+                        {{ vlrTotal | currency:'BRL':'symbol':'1.2-2' }}
+                    </h2>
                 }
             </section>
         }
