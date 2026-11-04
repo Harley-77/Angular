@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CurrencyPipe, UpperCasePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduto } from '../../models/produto.interface';
@@ -17,6 +17,7 @@ export class DetalhesProduto implements OnInit {
   private readonly srvSacola = inject(Sacola);
   private readonly srvRotaAtiva = inject(ActivatedRoute);
   private readonly srvRouter = inject(Router);
+  private readonly srvDetector = inject(ChangeDetectorRef);
 
   varProduto: IProduto | null = null; //armazena o produto obtido pela API.
   blnCarregando: boolean = true;
@@ -42,12 +43,14 @@ export class DetalhesProduto implements OnInit {
       next: (prmProduto: IProduto) => { // Executa quando a API responder corretamente.
         this.varProduto = prmProduto; // Armazena o produto retornado.
         this.blnCarregando = false; // Finaliza o carregamento.
+        this.srvDetector.markForCheck(); // Avisa ao Angular para monitorar a mudança de informações push.
       },
 
       error: (prmErro: unknown) => { // SAída para o caso de erro na requisição.
         console.error('Erro ao buscar o produto: ', prmErro);
         this.blnErro = true;
         this.blnCarregando = false;
+        this.srvDetector.markForCheck();
       }
     });
   }
