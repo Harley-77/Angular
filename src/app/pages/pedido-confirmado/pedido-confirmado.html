@@ -1,0 +1,53 @@
+<main class="container">
+    @if (objPedido) {
+        <h1>Pedido realizado com sucesso!</h1>
+        <p>
+            Obrigado pela compra,
+            <strong>{{ objPedido.cliente.nomeCompleto }}</strong>.
+        </p>
+
+        <section class="dados-cliente">
+            <h2>Dados do cliente</h2>
+            <p>E-mail: {{ objPedido.cliente.email }}</p>
+            <p>Endereço de entrega: {{ objPedido.cliente.endereco }}</p>
+        </section>
+
+        <section class="itens-pedido">
+            <h2>Itens do pedido</h2>
+
+            @for (
+                varItem of objPedido.itens;
+                track varItem.produto.id
+            ) {
+                <article class="item-pedido">
+                    <h3>{{ varItem.produto.title }} </h3>
+                    <p>Quantidade: {{ varItem.quantidade }} </p>
+                    <p>Preço unitário: {{varItem.produto.price | currency:'BRL':'symbol':'1.2-2'}}</p>
+                    <p>Subtotal: {{varItem.produto.price * varItem.quantidade | currency:'BRL':'symbol':'1.2-2' }} </p>
+                </article>
+            }
+        </section>
+
+        <section class="resumo-pedido">
+            <p>Quantidade total:
+                <strong>
+                    {{ objPedido.quantidadeTotal }}
+                </strong>
+            </p>
+
+            <h2>Total: {{
+                    objPedido.valorTotal | currency:'BRL':'symbol':'1.2-2' }}</h2>
+        </section>
+
+        <a routerLink="/produtos" class="botao-produtos">
+            Voltar para produtos
+        </a>
+
+    } @else {
+        <h1>Nenhum pedido encontrado</h1>
+        <p>Não existe um pedido finalizado para ser apresentado.</p>
+        <a routerLink="/produtos">
+            Voltar para produtos
+        </a>
+    }
+</main>

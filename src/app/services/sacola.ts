@@ -70,10 +70,10 @@ export class Sacola { // Declara e exporta o serviço responsável por gerenciar
                     quantidade: prmQuantidade // Armazena a quantidade recebida.
                 }
             ];
-        }
+        };
 
         this.sbjItensSacola.next(arrItensAtualizados); // Publica o novo estado para todos os componentes inscritos.
-    }
+    };
 
     mtdAlterarQuantidade( // Altera a quantidade de um produto. Pode somar ou subtrair.
         prmIdProduto: number, // parâmetro que identifica o produto objeto da ação;
@@ -98,7 +98,7 @@ export class Sacola { // Declara e exporta o serviço responsável por gerenciar
             );
 
         this.sbjItensSacola.next(arrItensAtualizados);
-    }
+    };
 
     
     mtdRemoverItem(prmIdProduto: number): void { // Remove um produto da sacola. Na realiade, não o remove de verdade, apenas aplica um método de filtro que deixa de exibir o item
@@ -113,9 +113,14 @@ export class Sacola { // Declara e exporta o serviço responsável por gerenciar
             );
 
         this.sbjItensSacola.next(arrItensAtualizados);
-    }
+    };
 
     mtdObterItens(): IItemSacola[] { // Declara o método que devolve os itens atuais da sacola.
         return this.sbjItensSacola.getValue(); // Retorna o último array armazenado no BehaviorSubject.
-    }
+    };
+
+    mtdLimparSacola(): void { // Método para esvaziar a sacola
+        this.sbjItensSacola.next([]); // atribui À sacola o valor de um array vazio. (next  novo valor)
+    };
+
 }
