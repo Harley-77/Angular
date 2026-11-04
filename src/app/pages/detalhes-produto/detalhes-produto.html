@@ -1,1 +1,63 @@
-<p>detalhes-produto works!</p>
+<main class="container"> <!-- Define o conteúdo principal da página. -->
+
+    @if (blnCarregando) { <!-- Verifica se a consulta ainda está sendo realizada. -->
+        <p>Carregando produto... Aguarde!</p> <!-- Exibe uma mensagem durante a consulta. -->
+
+    } @else if (blnErro) { <!-- Verifica se ocorreu algum erro. -->
+        <p class="mensagem-erro">
+            Não foi possível carregar o produto.
+        </p> <!-- Informa ao usuário sobre o problema. -->
+
+    } @else if (varProduto) { <!-- Confirma que existe um produto antes de acessar suas propriedades. -->
+        <section class="detalhes-produto"> <!-- Agrupa as informações detalhadas do produto. -->
+            <div class="detalhes-imagem"> <!-- Agrupa a imagem do produto. -->
+                <img
+                    [src]="varProduto.image"
+                    [alt]="varProduto.title"
+                > <!-- Exibe a imagem correspondente ao produto. -->
+            </div>
+
+            <div class="detalhes-informacoes"> <!-- Agrupa as informações textuais. -->
+                <p class="produto-categoria">
+                    {{ varProduto.category }}
+                </p>
+                <h1>
+                    {{ varProduto.title | uppercase }}
+                </h1> <!-- Exibe o título utilizando obrigatoriamente o UpperCasePipe. -->
+                <p class="produto-descricao">
+                    {{ varProduto.description }}
+                </p>
+                
+                <p class="produto-preco">
+                    {{ varProduto.price | currency:'BRL':'symbol':'1.2-2' }}
+                </p>
+
+                <p>
+                    Avaliação: {{ varProduto.rating.rate }}
+                </p>
+
+                <p>
+                    Quantidade de avaliações: {{ varProduto.rating.count }}
+                </p>
+                <div class="detalhes-acoes"> <!-- Agrupa os botões da página. -->
+
+                    <button
+                        type="button"
+                        (click)="mtdAdicionarSacola()"
+                    >
+                        Adicionar à Sacola
+                    </button>
+
+                    <button
+                        type="button"
+                        (click)="mtdVoltar()"
+                    >
+                        Voltar para Produtos
+                    </button>
+                </div>
+            </div>
+        </section>
+    }
+</main>
+
+ 

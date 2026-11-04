@@ -1,15 +1,15 @@
-import { Component,inject } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
-import { srvSacola } from '../../services/sacola';
+import { Component, inject } from '@angular/core';
+import { AsyncPipe, CurrencyPipe } from '@angular/common';
+import { Sacola } from '../../services/sacola';
 
 @Component({
-  imports: [CurrencyPipe],
-  selector: 'app-sacola',
-  styleUrl: './sacola.scss',
-  templateUrl: './sacola.html',
+  selector: 'app-carrinho',
+  imports: [AsyncPipe, CurrencyPipe], //pipe de moeda.
+  styleUrl: './carrinho.scss',
+  templateUrl: './carrinho.html',
 })
-export class Carrinho {
-  readonly cmpSacola = inject(srvSacola);
+export class Carrinho { // Declara e exporta a página da Sacola.
+  readonly srvSacola = inject(Sacola); // Injeta o serviço da sacola pra ser utilizado pelo componente.
 }
 
 

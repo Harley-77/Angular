@@ -1,1 +1,35 @@
-<p>card-produto works!</p>
+<article class="produto"> <!-- Representa visualmente um único produto da vitrine. -->
+    <div class="produto-imagem-container"> <!-- Cria uma área específica para a imagem do produto. -->
+        <img
+            [src]="varProduto.image"
+            [alt]="varProduto.title"
+            class="produto-imagem"
+        > <!-- Utiliza property binding para exibir a imagem correspondente ao produto. -->
+
+    </div>
+    <p class="produto-categoria"> <!-- Exibe a categoria do produto. -->
+        {{ varProduto.category }}
+    </p> 
+    <h2 class="produto-titulo"> <!-- Exibe o título do produto. -->
+        {{ varProduto.title }}
+    </h2> <!-- Interpolação -->
+    <p class="produto-preco"> <!-- Exibe o preço formatado em reais. -->
+        {{ varProduto.price | currency:'BRL':'symbol':'1.2-2' }}
+    </p>
+
+    <button
+        type="button" 
+        class="botao-detalhes"
+        (click)="mtdAbrirDetalhes()"
+    >
+        Ver Detalhes
+    </button>
+
+    <button
+        type="button"
+        class="botao-sacola"
+        (click)="mtdAdicionarSacola()"
+    > <!-- Executa o método do componente quando o usuário clicar no botão. Event Binding -->
+        Adicionar à Sacola
+    </button>
+</article>

@@ -1,0 +1,63 @@
+
+.produto {
+    display: flex; 
+    flex-direction: column; 
+    height: 100%; 
+    padding: 20px; 
+    border: 1px solid #dddddd; 
+    border-radius: 10px; 
+    background-color: #ffffff; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.produto:hover { 
+    transform: translateY(-4px); 
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); 
+}
+
+.produto-imagem-container { 
+    height: 220px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 15px; 
+}
+
+.produto-imagem { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+}
+
+.produto-categoria { 
+    font-size: 0.85rem; 
+    color: #777777; 
+    margin-bottom: 8px; 
+}
+
+.produto-titulo { 
+    font-size: 1.1rem; 
+    line-height: 1.4; 
+    margin-bottom: 15px; 
+    flex: 1; 
+}
+
+.produto-preco { 
+    font-size: 1.3rem; // Torna o preço mais destacado.
+    font-weight: bold; // Aplica negrito.
+    margin-bottom: 15px; // Cria espaço antes do botão.
+}
+
+.botao-sacola { 
+    padding: 12px 16px; 
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-weight: bold; 
+}
+
+.botao-sacola:hover { 
+    opacity: 0.85; 
+}
+
+ 

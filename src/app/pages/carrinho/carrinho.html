@@ -1,43 +1,47 @@
-<main class="container">
+<main class="container"> <!-- Aqui injeta o conteúdo da sacola -->
     <h1>Minha Sacola</h1>
-    @if (cmpSacola.arrItens().length === 0) {
-        <p>Sua sacola está vazia.</p>
-    } @else {
-        <section class="lista-sacola">
-            @for (varItem of cmpSacola.arrItens(); track varItem.produto.id) {
-                <article class="item-sacola">
-                    <img
-                        [src]="varItem.produto.image"
-                        [alt]="varItem.produto.title"
-                        class="item-imagem"
-                    >
+    
+    @if (srvSacola.obsItensSacola$ | async; as arrItensSacola) {
+    
+        @if (arrItensSacola.length === 0) { <!-- Verifica se a sacola não está vazia -->
+            <p>Sua sacola está vazia.</p>
+        } @else {
+            <section class="lista-sacola">
+                @for (varItem of arrItensSacola; track varItem.produto.id) { <!-- Percorre os itens da sacola e identifica cada um pelo ID do produto -->
+                    <article class="item-sacola"> <!-- Representa cada item da sacola -->
+                        <img
+                            [src]="varItem.produto.image"
+                            [alt]="varItem.produto.title"
+                            class="item-imagem"
+                        > <!-- Exibve a imagem do produto -->
 
-                    <div class="item-dados">
-                        <h2>
-                            {{ varItem.produto.title }}
-                        </h2>
+                        <div class="item-dados">
+                            <h2>
+                                {{ varItem.produto.title }}
+                            </h2> <!-- Exibe o título do produto -->
 
-                        <p>
-                            Preço:
-                            {{ varItem.produto.price | currency:'BRL':'symbol':'1.2-2' }}
-                        </p>
+                            <p>
+                                Preço:
+                                {{ varItem.produto.price | currency:'BRL':'symbol':'1.2-2' }}
+                            </p> <!-- Exibe o preço do produto -->
 
-                        <p>
-                            Quantidade:
-                            {{ varItem.quantidade }}
-                        </p>
+                            <p>
+                                Quantidade:
+                                {{ varItem.quantidade }}
+                            </p> <!-- Exibe q quantidade adicionada -->
 
-                        <p>
-                            Subtotal:
-                            {{
-                                varItem.produto.price * varItem.quantidade
-                                | currency:'BRL':'symbol':'1.2-2'
-                            }}
-                        </p>
-                    </div>
-                </article>
-            }
-        </section>
+                            <p>
+                                Subtotal:
+                                {{
+                                    varItem.produto.price * varItem.quantidade
+                                    | currency:'BRL':'symbol':'1.2-2'
+                                }}
+                            </p> <!-- Calcula e exibe o subtotal do produto -->
+                        </div>
+                    </article>
+                }
+            </section>
+        }
     }
 </main>
 
