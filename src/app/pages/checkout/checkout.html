@@ -1,1 +1,87 @@
-<p>checkout works!</p>
+<main class="container"> <!-- Define a área principal da página de checkout. -->
+
+    <h1>Finalizar Compra</h1>
+    <a routerLink="/sacola" class="link-voltar">
+        ← Voltar para a Sacola
+    </a>
+
+    <!-- [formGroup] conecta este formulário HTML ao objeto frmCheckout criado no checkout.ts.-->
+    <form [formGroup]="frmCheckout" (ngSubmit)="mtdFinalizarCompra()">
+
+        <!-- Campo Nome Completo -->
+        <div class="campo-formulario">
+            <label for="nomeCompleto">
+                Nome completo
+            </label>
+            <input
+                id="nomeCompleto"
+                type="text"
+                formControlName="nomeCompleto"
+                placeholder="Digite seu nome completo"
+            >
+
+            <!-- Verifica se o campo já foi utilizado e continua inválido. Assim evitamos mostrar o erro antes mesmo de o usuário começar a preencher o formulário. O touched indica que o usu´rio já entrou e saiu desse campo-->
+            @if (
+                frmCheckout.controls.nomeCompleto.touched &&
+                frmCheckout.controls.nomeCompleto.invalid
+            ) {
+                <span class="mensagem-erro">
+                    Informe um nome com pelo menos 3 caracteres.
+                </span>
+            }
+        </div>
+
+        <!-- Campo E-mail -->
+        <div class="campo-formulario">
+
+            <label for="email">
+                E-mail
+            </label>
+            <input
+                id="email"
+                type="email"
+                formControlName="email"
+                placeholder="Digite seu e-mail"
+            >
+
+            @if (
+                frmCheckout.controls.email.touched &&
+                frmCheckout.controls.email.invalid
+            ) {
+                <span class="mensagem-erro">
+                    Informe um e-mail válido.
+                </span>
+            }
+        </div>
+
+        <!-- Campo Endereço -->
+        <div class="campo-formulario">
+            <label for="endereco">
+                Endereço de entrega
+            </label>
+            <input
+                id="endereco"
+                type="text"
+                formControlName="endereco"
+                placeholder="Digite seu endereço"
+            >
+            @if (
+                frmCheckout.controls.endereco.touched &&
+                frmCheckout.controls.endereco.invalid
+            ) {
+                <span class="mensagem-erro">
+                    Informe um endereço com pelo menos 5 caracteres.
+                </span>
+            }
+        </div>
+        <!-- Por enquanto o botão apenas ficará habilitado quando todo o formulário estiver válido. -->
+
+        <button
+            type="submit"
+            class="botao-finalizar"
+            [disabled]="frmCheckout.invalid"
+        >
+            Finalizar Compra
+        </button>
+    </form>
+</main>

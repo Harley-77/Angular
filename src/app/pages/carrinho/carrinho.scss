@@ -93,6 +93,7 @@
 .link-voltar {
     display: inline-block;
     margin: 10px 0 24px;
+    justify-content: flex-end;
     padding: 10px 18px;
     border-radius: 5px;
     background-color: #333;
@@ -103,4 +104,20 @@
 
 .link-voltar:hover {
     background-color: #555;
+}
+
+.botao-finalizar-compra {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 12px 20px;
+    background-color: #005ca9;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-finalizar-compra:hover {
+    background-color: #004682;
 }
