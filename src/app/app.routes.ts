@@ -4,6 +4,7 @@ import { DetalhesProduto } from './pages/detalhes-produto/detalhes-produto'; // 
 import { Carrinho } from './pages/carrinho/carrinho'; // IMporta a página responsável pela sacola de produtos.
 import { Checkout } from './pages/checkout/checkout'; // IMporta a página do Checkout com os formul´rios.
 import { PedidoConfirmado } from './pages/pedido-confirmado/pedido-confirmado';
+import { PaginaNaoEncontrada } from './pages/pagina-nao-encontrada/pagina-nao-encontrada'; // Importa a página de erro 404.
 
 export const routes: Routes = [ //declara e exporta a lista de rotas da aplicação
     { // Configuração ad rota raiz.
@@ -33,7 +34,12 @@ export const routes: Routes = [ //declara e exporta a lista de rotas da aplicaç
     },
 
     { // Navegação par a confirmação do pedido.
-        path: 'pedido confirmado',
+        path: 'pedido-confirmado',
         component: PedidoConfirmado
+    },
+
+    { // Rota para página não encontrada.
+        path: '**',
+        component: PaginaNaoEncontrada
     }
 ];

@@ -1,0 +1,60 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 24px;
+}
+
+.pagina-erro {
+    padding: 48px 32px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+    text-align: center;
+}
+
+.codigo-erro {
+    display: block;
+    margin-bottom: 8px;
+    color: #005ca9;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.pagina-erro h1 {
+    margin-bottom: 12px;
+    color: #1f2937;
+}
+
+.pagina-erro p {
+    margin-bottom: 28px;
+    color: #6b7280;
+}
+
+.botao-produtos {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 7px;
+    background-color: #005ca9;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.2s ease;
+}
+
+.botao-produtos:hover {
+    background-color: #004780;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 48px 16px;
+    }
+    .pagina-erro {
+        padding: 36px 20px;
+    }
+    .codigo-erro {
+        font-size: 3rem;
+    }
+}

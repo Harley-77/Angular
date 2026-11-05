@@ -1,43 +1,101 @@
+// --------------------------------------------------
+// CONTAINER PRINCIPAL
+// --------------------------------------------------
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 24px;
+    padding: 32px 24px;
 }
 
 .container h1 {
-    margin-bottom: 24px;
+    margin: 0 0 8px;
+    color: #1f2937;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
+// --------------------------------------------------
+// LINK VOLTAR
+// --------------------------------------------------
+.link-voltar {
+    display: inline-block;
+    margin: 8px 0 28px;
+    color: #005ca9;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-voltar:hover {
+    text-decoration: underline;
+}
+
+// --------------------------------------------------
+// LISTA DA SACOLA
+// --------------------------------------------------
 .lista-sacola {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
 }
 
+// --------------------------------------------------
+// ITEM DA SACOLA
+// --------------------------------------------------
 .item-sacola {
     display: flex;
     align-items: center;
-    gap: 24px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    gap: 28px;
+    padding: 22px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition:
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
+.item-sacola:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.09);
+}
+
+// --------------------------------------------------
+// IMAGEM
+// --------------------------------------------------
 .item-imagem {
-    width: 130px;
-    height: 130px;
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
     object-fit: contain;
 }
 
+// --------------------------------------------------
+// DADOS DO PRODUTO
+// --------------------------------------------------
 .item-dados {
     flex: 1;
 }
 
 .item-dados h2 {
-    font-size: 18px;
-    margin-top: 0;
+    margin: 0 0 12px;
+    color: #1f2937;
+    font-size: 1.1rem;
+    line-height: 1.4;
 }
 
+.item-dados p {
+    margin: 8px 0;
+    color: #4b5563;
+}
+
+.item-dados strong {
+    color: #1f2937;
+}
+
+// --------------------------------------------------
+// CONTROLE DE QUANTIDADE
+// --------------------------------------------------
 .controle-quantidade {
     display: flex;
     align-items: center;
@@ -45,79 +103,137 @@
     margin: 16px 0;
 }
 
+.controle-quantidade span {
+    color: #4b5563;
+    font-weight: 600;
+}
+
+.controle-quantidade strong {
+    min-width: 24px;
+    text-align: center;
+    color: #1f2937;
+}
+
 .controle-quantidade button {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #005ca9;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #005ca9;
+    font-size: 1.1rem;
+    font-weight: 700;
     cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.controle-quantidade button:hover:not(:disabled) {
+    background-color: #005ca9;
+    color: #ffffff;
 }
 
 .controle-quantidade button:disabled {
+    border-color: #d1d5db;
+    background-color: #f3f4f6;
+    color: #9ca3af;
     cursor: not-allowed;
-    opacity: 0.4;
 }
 
+// --------------------------------------------------
+// BOTÃO REMOVER
+// --------------------------------------------------
 .botao-remover {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    background: #c62828;
-    color: white;
+    margin-top: 8px;
+    padding: 9px 14px;
+    border: 1px solid #b42318;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #b42318;
+    font-weight: 600;
     cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
 
+.botao-remover:hover {
+    background-color: #b42318;
+    color: #ffffff;
+}
+
+// --------------------------------------------------
+// RESUMO DA SACOLA
+// --------------------------------------------------
 .resumo-sacola {
     display: flex;
     justify-content: flex-end;
-    margin-top: 24px;
-    padding: 20px;
-    border-top: 2px solid #ddd;
+    margin-top: 28px;
+    padding: 22px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background-color: #f8fafc;
 }
 
-.sacola-vazia {
-    padding: 24px;
-    text-align: center;
+.resumo-sacola h2 {
+    margin: 0;
+    color: #005ca9;
+    font-size: 1.35rem;
 }
 
-@media (max-width: 600px) {
-    .item-sacola {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .item-imagem {
-        width: 100px;
-        height: 100px;
-    }
-}
-
-.link-voltar {
-    display: inline-block;
-    margin: 10px 0 24px;
-    justify-content: flex-end;
-    padding: 10px 18px;
-    border-radius: 5px;
-    background-color: #333;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.link-voltar:hover {
-    background-color: #555;
-}
-
+// --------------------------------------------------
+// FINALIZAR COMPRA
+// --------------------------------------------------
 .botao-finalizar-compra {
-    display: inline-block;
-    margin-top: 24px;
-    padding: 12px 20px;
+    display: block;
+    width: fit-content;
+    margin: 20px 0 0 auto;
+    padding: 13px 22px;
+    border-radius: 7px;
     background-color: #005ca9;
     color: #ffffff;
-    border-radius: 5px;
     text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
+    font-weight: 700;
+    transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
 }
 
 .botao-finalizar-compra:hover {
-    background-color: #004682;
+    background-color: #004780;
+}
+
+.botao-finalizar-compra:active {
+    transform: scale(0.98);
+}
+
+// --------------------------------------------------
+// RESPONSIVIDADE
+// --------------------------------------------------
+@media (max-width: 650px) {
+    .container {
+        padding: 24px 16px;
+    }
+    .container h1 {
+        font-size: 1.6rem;
+    }
+    .item-sacola {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+    .item-imagem {
+        width: 100%;
+        height: 180px;
+    }
+    .resumo-sacola {
+        justify-content: center;
+        text-align: center;
+    }
+    .botao-finalizar-compra {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
 }

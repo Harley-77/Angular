@@ -1,1 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+// --------------------------------------------------
+// CONFIGURAÇÕES GLOBAIS
+// --------------------------------------------------
+// Faz com que padding e border façam parte
+// do tamanho total dos elementos.
+* {
+    box-sizing: border-box;
+}
+
+// Remove algumas diferenças padrão dos navegadores.
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+// Configuração visual principal da aplicação.
+body {
+    background-color: #f5f7fa;
+    color: #1f2937;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+    font-size: 16p;
+    line-height: .5;
+}
+
+// --------------------------------------------------
+// ELEMENTOS GERAIS
+// --------------------------------------------------
+h1, h2, h3, p { 
+    margin-top: 0;
+}
+
+button, input {
+    font: inherit;
+}
+
+// Evita que imagens ultrapassem seus containers.
+img {
+    max-width: 100%;
+}
+
+// --------------------------------------------------
+// ACESSIBILIDADE
+// --------------------------------------------------
+
+// Cria um indicador visual para navegação por teclado.
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid rgba(0, 92, 169, 0.35);
+    outline-offset: 2px;
+}
+
+// --------------------------------------------------
+// SELEÇÃO DE TEXTO
+// --------------------------------------------------
+::selection {
+    background-color: #005ca9;
+    color: #ffffff;
+}

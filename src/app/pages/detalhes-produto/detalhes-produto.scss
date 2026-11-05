@@ -1,58 +1,207 @@
-
-.container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 30px; 
+// --------------------------------------------------
+// CONTAINER PRINCIPAL
+// --------------------------------------------------
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
 }
 
-.detalhes-produto { 
-    display: grid; 
-    grid-template-columns: minmax(300px, 1fr) 1.5fr; 
-    gap: 40px; 
+// --------------------------------------------------
+// ÁREA PRINCIPAL DO PRODUTO
+// --------------------------------------------------
+.detalhes-produto {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) 1.4fr;
+    gap: 48px;
+    padding: 32px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-.detalhes-imagem { 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+// --------------------------------------------------
+// IMAGEM
+// --------------------------------------------------
+.detalhes-imagem {
+    min-height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 10px;
 }
 
-.detalhes-imagem img { 
-    width: 100%; 
-    max-width: 400px; 
-    height: 400px; 
-    object-fit: contain; 
+.detalhes-imagem img {
+    width: 100%;
+    max-width: 400px;
+    height: 380px;
+    object-fit: contain;
+    transition: transform 0.25s ease;
 }
 
-.detalhes-informacoes { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 15px; 
+.detalhes-imagem img:hover {
+    transform: scale(1.03);
 }
 
-.produto-preco { 
-    font-size: 1.8rem; 
-    font-weight: bold; 
+// --------------------------------------------------
+// INFORMAÇÕES
+// --------------------------------------------------
+.detalhes-informacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
-.detalhes-acoes { 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 10px; 
+.produto-categoria {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.detalhes-acoes button { 
-    padding: 12px 18px; 
-    cursor: pointer; 
+.detalhes-informacoes h1 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 1.8rem;
+    line-height: 1.35;
 }
 
-.mensagem-erro { 
-    color: #b00020; 
+.produto-descricao {
+    margin: 0;
+    color: #4b5563;
+    line-height: 1.7;
+    font-size: 1rem;
 }
 
-@media (max-width: 700px) { 
-    .detalhes-produto { 
-        grid-template-columns: 1fr; 
+.produto-preco {
+    margin: 4px 0;
+    color: #005ca9;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+// --------------------------------------------------
+// AVALIAÇÃO
+// --------------------------------------------------
+.detalhes-informacoes > p:not(
+    .produto-categoria,
+    .produto-descricao,
+    .produto-preco
+) {
+    margin: 0;
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.1;
+}
+
+// --------------------------------------------------
+// BOTÕES
+// --------------------------------------------------
+.detalhes-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.detalhes-acoes button {
+    min-width: 180px;
+    padding: 12px 18px;
+    border-radius: 7px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.1s ease;
+}
+
+// Primeiro botão: ação principal.
+.detalhes-acoes button:first-child {
+    border: 1px solid #005ca9;
+    background-color: #005ca9;
+    color: #ffffff;
+}
+
+.detalhes-acoes button:first-child:hover {
+    border-color: #004780;
+    background-color: #004780;
+}
+
+// Segundo botão: ação secundária.
+
+.detalhes-acoes button:last-child {
+    border: 1px solid #005ca9;
+    background-color: #ffffff;
+    color: #005ca9;
+}
+
+.detalhes-acoes button:last-child:hover {
+    background-color: #eef6fc;
+}
+
+.detalhes-acoes button:active {
+    transform: scale(0.98);
+}
+
+// --------------------------------------------------
+// MENSAGEM DE ERRO
+// --------------------------------------------------
+.mensagem-erro {
+    padding: 16px;
+    border: 1px solid #f5c2c7;
+    border-radius: 8px;
+    background-color: #f8d7da;
+    color: #842029;
+    text-align: center;
+    font-weight: 600;
+}
+
+// --------------------------------------------------
+// RESPONSIVIDADE
+// --------------------------------------------------
+
+@media (max-width: 750px) {
+    .container {
+        padding: 24px 16px;
+    }
+
+    .detalhes-produto {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 20px;
+    }
+
+    .detalhes-imagem {
+        min-height: 280px;
+    }
+
+    .detalhes-imagem img {
+        height: 280px;
+    }
+
+    .detalhes-informacoes h1 {
+        font-size: 1.5rem;
+    }
+
+    .produto-preco {
+        font-size: 1.7rem;
+    }
+
+    .detalhes-acoes {
+        flex-direction: column;
+    }
+
+    .detalhes-acoes button {
+        width: 100%;
     }
 }
 

@@ -1,12 +1,10 @@
 import { Component, inject } from '@angular/core'; 
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms'; // Importa os recursos necessários para criar e validar o formulário.
-import { RouterLink } from '@angular/router'; // Permite criar links de navegação no HTML.
+import { RouterLink, Router} from '@angular/router'; // Permite criar links de navegação no HTML.
 import { ICheckout } from '../../models/checkout.interface'; //IMporta a interface do checkout
-import { email } from '@angular/forms/signals';
 import { Sacola } from '../../services/sacola';
 import { IPedido } from '../../models/pedido.interface';
 import { IItemSacola } from '../../models/item-sacola.interface';
-import { Router } from '@angular/router';
 import { Pedido } from '../../services/pedido';
 
 @Component({

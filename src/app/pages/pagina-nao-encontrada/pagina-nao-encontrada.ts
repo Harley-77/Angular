@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
-  selector: 'app-pagina-nao-encontrada',
-  styleUrl: './pagina-nao-encontrada.scss',
-  templateUrl: './pagina-nao-encontrada.html',
+    selector: 'app-pagina-nao-encontrada',
+    imports: [RouterLink],
+    styleUrl: './pagina-nao-encontrada.scss',
+    templateUrl: './pagina-nao-encontrada.html',
 })
+
 export class PaginaNaoEncontrada {}

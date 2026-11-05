@@ -1,134 +1,84 @@
-.cabecalho-vitrine {
-    display: flex;
-    justify-content: space-between; //fas os elementos ocuparem espaços opostos.
-    align-items: center;
-    margin-bottom: 24px;
-}
-
-.contador-sacola {
-    padding: 10px 16px;
-    background-color: #005ca9;
-    color: #ffffff;
-    border-radius: 8px;
-    font-weight: 600;
-}
-
+// Container principal da página.
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 24px;
+    padding: 32px 24px;
 }
 
-.galeria-produtos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); //coluns responsivs.
-    gap: 20px;
-    padding: 16px;
-}
-
-.produto {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #dddddd;
-    border-radius: 12px;
-    padding: 16px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; //transição suave para hover.
-    background-color: #ffffff;
-    overflow: hidden; //garante que o conteúdo não ultrapasse os limites do card.
-}
-
-.produto:hover {
-    transform: translateY(-5px); //efeito de elevação ao passar o mouse.
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); //sombra suave.
-}
-
-.produto-imagem-container {
-    width: 100%;
-    height: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9;
-}
-
-.produto-imagem {
-    max-width: 100%;
-    max-height: 200px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-}
-
-.produto-conteudo {
-    flex: 1; //garante que o conteúdo ocupe o espaço disponível.
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; //distribui o conteúdo de forma equilibrada.
-    padding: 16px;
-}
-
-.produto-categoria {
-    font-size: 0.85rem;
-    color: #777777;
-    margin-bottom: 8px;
-}
-
-.produto-titulo {
-    font-size: 1.1rem;
-    line-height: 1.4;
-    font-weight: bold;
-    margin: 0 0 15px;
-    flex:1; //garante que o título ocupe o espaço disponível.
-}
-
-.produto-preco {
-    font-size: 1.3rem;
-    color: #333333;
-    margin: 0 0 16px;
+// Título da página.
+.container h1 {
+    margin: 0 0 24px;
+    color: #1f2937;
+    font-size: 2rem;
     font-weight: 700;
 }
 
-.botao-sacola {
-    width: 100%;
-    background-color: #007bff; //cor azul padrão do bootstrap.
-    color: #ffffff;
-    border: none;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease; //transição suave para hover.
+// Área do campo de pesquisa.
+.campo-busca {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 32px;
 }
 
-.botao-sacola:hover {
-    background-color: #738039; //tom mais escuro de azul para hover.
+// Texto acima do campo de pesquisa.
+.campo-busca label {
+    color: #374151;
+    font-size: 0.95rem;
+    font-weight: 600;
 }
+
+// Campo de pesquisa.
+.campo-busca input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #1f2937;
+    font-size: 1rem;
+    transition: border-color 0.2s ease,  box-shadow 0.2s ease;
+}
+
+// Destaque do campo quando selecionado.
+.campo-busca input:focus {
+    outline: none;
+    border-color: #005ca9;
+    box-shadow: 0 0 0 3px rgba(0, 92, 169, 0.12);
+}
+
+// Grade responsiva responsável por organizar os cards.
+.galeria-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+// Mensagem apresentada caso ocorra erro na API.
 
 .mensagem-erro {
-    color: #ff0000; //vermelho para indicar erro.
+    padding: 16px;
+    border: 1px solid #f5c2c7;
+    border-radius: 8px;
+    background-color: #f8d7da;
+    color: #842029;
     text-align: center;
-    margin-top: 20px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
-.navegacao-sacola {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 24px;
-}
+// Ajustes para dispositivos menores.
+@media (max-width: 600px) {
+    .container {
+        padding: 24px 16px;
+    }
 
-.link-sacola {
-    display: inline-block;
-    padding: 10px 18px;
-    border-radius: 5px;
-    background-color: #333;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
+    .container h1 {
+        font-size: 1.6rem;
+    }
 
-.link-sacola:hover {
-    background-color: #555;
+    .galeria-produtos {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
 }

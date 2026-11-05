@@ -1,1 +1,25 @@
-<p>cabecalho works!</p>
+<header class="cabecalho">
+    <div class="cabecalho-conteudo">
+        <!-- Nome da aplicação. Também funciona como link para a vitrine. -->
+        <a routerLink="/produtos" class="cabecalho-logo">Vitrine de Produtos</a>
+
+        <!-- Menu principal da aplicação. -->
+        <nav class="cabecalho-navegacao">
+            <a
+                routerLink="/produtos"
+                routerLinkActive="link-ativo"
+                class="cabecalho-link"
+            >Produtos</a>
+
+            <a
+                routerLink="/sacola"
+                routerLinkActive="link-ativo"
+                class="cabecalho-sacola"
+            >Sacola
+                <span class="contador-sacola">
+                    {{ srvSacola.obsQuantidadeTotal$ | async }}
+                </span>
+            </a>
+        </nav>
+    </div>
+</header>

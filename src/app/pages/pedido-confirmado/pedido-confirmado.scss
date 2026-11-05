@@ -1,0 +1,161 @@
+// --------------------------------------------------
+// CONTAINER PRINCIPAL
+// --------------------------------------------------
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+// --------------------------------------------------
+// TÍTULO E MENSAGEM DE SUCESSO
+// --------------------------------------------------
+.container > h1 {
+    margin: 0 0 16px;
+    color: #2e7d32;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.container > p {
+    margin-bottom: 28px;
+    color: #4b5563;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.container > p strong {
+    color: #1f2937;
+}
+
+// --------------------------------------------------
+// SEÇÕES DO PEDIDO
+// --------------------------------------------------
+.dados-cliente,
+.itens-pedido,
+.resumo-pedido {
+    margin-bottom: 24px;
+    padding: 24px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.dados-cliente h2,
+.itens-pedido h2,
+.resumo-pedido h2 {
+    margin: 0 0 16px;
+    color: #1f2937;
+    font-size: 1.25rem;
+}
+
+.dados-cliente p {
+    margin: 8px 0;
+    color: #4b5563;
+    line-height: 1;
+}
+
+// --------------------------------------------------
+// ITENS DO PEDIDO
+// --------------------------------------------------
+
+.item-pedido {
+    padding: 16px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.item-pedido:first-of-type {
+    padding-top: 4px;
+}
+
+.item-pedido:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.item-pedido h3 {
+    margin: 0 0 10px;
+    color: #1f2937;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.item-pedido p {
+    margin: 5px 0;
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1;
+}
+
+// --------------------------------------------------
+// RESUMO DO PEDIDO
+// --------------------------------------------------
+.resumo-pedido {
+    border-color: #cbd5e1;
+    background-color: #f8fafc;
+    text-align: right;
+}
+
+.resumo-pedido p {
+    margin: 0 0 12px;
+    color: #4b5563;
+    line-height: 1.2;
+}
+
+.resumo-pedido h2 {
+    margin: 0;
+    color: #005ca9;
+    font-size: 1.6rem;
+}
+
+// --------------------------------------------------
+// BOTÃO VOLTAR PARA PRODUTOS
+// --------------------------------------------------
+.botao-produtos {
+    display: block;
+    width: fit-content;
+    margin: 28px 0 0 auto;
+    padding: 12px 20px;
+    border-radius: 7px;
+    background-color: #005ca9;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
+}
+
+.botao-produtos:hover {
+    background-color: #004780;
+}
+
+.botao-produtos:active {
+    transform: scale(0.98);
+}
+
+// --------------------------------------------------
+// RESPONSIVIDADE
+// --------------------------------------------------
+@media (max-width: 600px) {
+    .container {
+        padding: 24px 16px;
+    }
+    .container > h1 {
+        font-size: 1.6rem;
+    }
+    .dados-cliente,
+    .itens-pedido,
+    .resumo-pedido {
+        padding: 18px;
+    }
+    .resumo-pedido {
+        text-align: left;
+    }
+    .botao-produtos {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}

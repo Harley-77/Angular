@@ -1,0 +1,77 @@
+.cabecalho {
+    width: 100%;
+    background-color: #005ca9;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.cabecalho-conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.cabecalho-logo {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.cabecalho-navegacao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cabecalho-link, .cabecalho-sacola {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background-color 0.2s ease,color 0.2s ease;
+}
+
+.cabecalho-link:hover, .cabecalho-sacola:hover, .link-ativo {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+.contador-sacola {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    background-color: #ffffff;
+    color: #005ca9;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* Adaptação para telas menores. */
+
+@media (max-width: 600px) {
+    .cabecalho-conteudo {
+        padding: 14px 16px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .cabecalho-navegacao {
+        width: 100%;
+        justify-content: center;
+    }
+}
